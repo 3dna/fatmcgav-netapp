@@ -15,7 +15,7 @@ Puppet::Type.newtype(:netapp_role) do
     end
   end
 
-  newparam(:comment) do
+  newproperty(:comment) do
     desc "Role comment"
     validate do |value|
       unless value =~ /^[\w\s\-\.]+$/
