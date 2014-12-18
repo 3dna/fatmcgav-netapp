@@ -5,7 +5,8 @@ Puppet::Type.type(:netapp_user).provide(:sevenmode, :parent => Puppet::Provider:
   defaultfor :feature => :posix
   
   # Restrict to 7Mode
-  confine :is_clustered => false
+  confine :is_clustered => :false
+  defaultfor :is_clustered => :false
   
   netapp_commands :ulist   => 'useradmin-user-list'
   netapp_commands :udel    => 'useradmin-user-delete'
