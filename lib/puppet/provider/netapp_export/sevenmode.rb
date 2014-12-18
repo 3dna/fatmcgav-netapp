@@ -10,7 +10,7 @@ Puppet::Type.type(:netapp_export).provide(:sevenmode, :parent => Puppet::Provide
   confine :false => begin
     a = Puppet::Node::Facts.indirection
     a.terminus_class = :network_device
-    a.find(Puppet::Indirector::Request.new(:facts, :find, "clustered", nil))
+    a.find(Puppet::Indirector::Request.new(:facts, :find, "is_clustered", nil))
   rescue
     :true
   end

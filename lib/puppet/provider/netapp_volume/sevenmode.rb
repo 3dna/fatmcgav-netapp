@@ -7,14 +7,14 @@ Puppet::Type.type(:netapp_volume).provide(:sevenmode, :parent => Puppet::Provide
   defaultfor :feature => :posix
   
   # Only run in 7Mode
-  #confine :clustered => :false
-  #defaultfor :clustered => :false
+  #confine :is_clustered => :false
+  #defaultfor :is_clustered => :false
   
   # Restrict to 7Mode
   confine :false => begin
     a = Puppet::Node::Facts.indirection
     a.terminus_class = :network_device
-    a.find(Puppet::Indirector::Request.new(:facts, :find, "clustered", nil))
+    a.find(Puppet::Indirector::Request.new(:facts, :find, "is_clustered", nil))
   rescue
     :true
   end
